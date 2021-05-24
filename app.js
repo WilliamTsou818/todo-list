@@ -27,6 +27,7 @@ app.use(express.urlencoded({ extended : true }))
 app.get('/', (req, res) => {
   Todo.find()
     .lean()
+    .sort({ _id : 'asc' }) // asc : 升冪 || desc : 降冪
     .then(todos => res.render('index', { todos }))
     .catch(error => console.error(error))
 })
